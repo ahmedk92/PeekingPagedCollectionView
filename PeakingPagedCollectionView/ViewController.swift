@@ -29,7 +29,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
         cell.label.text = "\(indexPath.item)"
-        cell.layer.cornerRadius = 8
         return cell
     }
     // MARK: - UICollectionViewDelegate
@@ -104,6 +103,7 @@ class Cell: UICollectionViewCell {
     private lazy var containerView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .systemYellow
+        view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         NSLayoutConstraint.activate([
