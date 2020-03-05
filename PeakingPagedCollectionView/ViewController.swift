@@ -71,9 +71,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
         }
     }
-//    private var spacing: CGFloat {
-//        return collectionView.bounds.width * spacingFactor
-//    }
+    private var spacing: CGFloat {
+        return collectionView.bounds.width * spacingFactor
+    }
     private var peak: CGFloat {
         return spacing * 4 // not necessarily a multiple of spacing; can be anything (but should be greater than spacing).
     }
@@ -87,8 +87,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private let count = 8
 }
 
-//private let spacingFactor: CGFloat = 0.0625
-private let spacing: CGFloat = 16
+private let spacingFactor: CGFloat = 0.0625
+//private let spacing: CGFloat = 16
 
 class Cell: UICollectionViewCell {
     lazy var label: UILabel = {
@@ -109,8 +109,8 @@ class Cell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 - spacingFactor),
-            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -spacing),
+            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 - spacingFactor),
+//            view.widthAnchor.constraint(equalsTo: contentView.widthAnchor, constant: -spacing),
             view.heightAnchor.constraint(equalTo: contentView.heightAnchor)
         ])
         return view
