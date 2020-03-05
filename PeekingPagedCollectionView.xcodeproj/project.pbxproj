@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		284CE502240EF41C0025B04F /* PeakingPagedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeakingPagedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		284CE502240EF41C0025B04F /* PeekingPagedCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeekingPagedCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		284CE505240EF41C0025B04F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		284CE509240EF41C0025B04F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		284CE50C240EF41C0025B04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		284CE4F9240EF41C0025B04F = {
 			isa = PBXGroup;
 			children = (
-				284CE504240EF41C0025B04F /* PeakingPagedCollectionView */,
+				284CE504240EF41C0025B04F /* PeekingPagedCollectionView */,
 				284CE503240EF41C0025B04F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		284CE503240EF41C0025B04F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				284CE502240EF41C0025B04F /* PeakingPagedCollectionView.app */,
+				284CE502240EF41C0025B04F /* PeekingPagedCollectionView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		284CE504240EF41C0025B04F /* PeakingPagedCollectionView */ = {
+		284CE504240EF41C0025B04F /* PeekingPagedCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				284CE505240EF41C0025B04F /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				284CE510240EF41D0025B04F /* LaunchScreen.storyboard */,
 				284CE513240EF41D0025B04F /* Info.plist */,
 			);
-			path = PeakingPagedCollectionView;
+			path = PeekingPagedCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		284CE501240EF41C0025B04F /* PeakingPagedCollectionView */ = {
+		284CE501240EF41C0025B04F /* PeekingPagedCollectionView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 284CE516240EF41D0025B04F /* Build configuration list for PBXNativeTarget "PeakingPagedCollectionView" */;
+			buildConfigurationList = 284CE516240EF41D0025B04F /* Build configuration list for PBXNativeTarget "PeekingPagedCollectionView" */;
 			buildPhases = (
 				284CE4FE240EF41C0025B04F /* Sources */,
 				284CE4FF240EF41C0025B04F /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = PeakingPagedCollectionView;
-			productName = PeakingPagedCollectionView;
-			productReference = 284CE502240EF41C0025B04F /* PeakingPagedCollectionView.app */;
+			name = PeekingPagedCollectionView;
+			productName = PeekingPagedCollectionView;
+			productReference = 284CE502240EF41C0025B04F /* PeekingPagedCollectionView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 284CE4FD240EF41C0025B04F /* Build configuration list for PBXProject "PeakingPagedCollectionView" */;
+			buildConfigurationList = 284CE4FD240EF41C0025B04F /* Build configuration list for PBXProject "PeekingPagedCollectionView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				284CE501240EF41C0025B04F /* PeakingPagedCollectionView */,
+				284CE501240EF41C0025B04F /* PeekingPagedCollectionView */,
 			);
 		};
 /* End PBXProject section */
@@ -281,14 +281,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PeakingPagedCollectionView/Info.plist;
+				INFOPLIST_FILE = PeekingPagedCollectionView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AK.PeakingPagedCollectionView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = AK.PeekingPagedCollectionView;
+				PRODUCT_NAME = PeekingPagedCollectionView;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,14 +299,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PeakingPagedCollectionView/Info.plist;
+				INFOPLIST_FILE = PeekingPagedCollectionView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AK.PeakingPagedCollectionView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = AK.PeekingPagedCollectionView;
+				PRODUCT_NAME = PeekingPagedCollectionView;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		284CE4FD240EF41C0025B04F /* Build configuration list for PBXProject "PeakingPagedCollectionView" */ = {
+		284CE4FD240EF41C0025B04F /* Build configuration list for PBXProject "PeekingPagedCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				284CE514240EF41D0025B04F /* Debug */,
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		284CE516240EF41D0025B04F /* Build configuration list for PBXNativeTarget "PeakingPagedCollectionView" */ = {
+		284CE516240EF41D0025B04F /* Build configuration list for PBXNativeTarget "PeekingPagedCollectionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				284CE517240EF41D0025B04F /* Debug */,

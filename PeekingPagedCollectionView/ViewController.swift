@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  PeakingPagedCollectionView
+//  PeekingPagedCollectionView
 //
 //  Created by Ahmed Khalaf on 3/3/20.
 //  Copyright © 2020 io.github.ahmedkhalaf. All rights reserved.
@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        insets = peak / 2
+        insets = peek / 2
     }
         
     // MARK: - UICollectionViewDataSource
@@ -73,13 +73,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private var spacing: CGFloat {
         return spacingStrategy.spacing(collectionViewWidth: collectionView.bounds.width)
     }
-    private var peak: CGFloat {
+    private var peek: CGFloat {
         return spacing * 4 // not necessarily a multiple of spacing; can be anything (but should be greater than spacing).
     }
     
     @IBOutlet private weak var collectionView: UICollectionView!
     private var cellSize: CGSize {
-        return CGSize(width: collectionView.bounds.width - peak, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width - peek, height: collectionView.bounds.height)
     }
     private var currentIndex = 0
     private var lastTargetContentOffsetX: CGFloat?
