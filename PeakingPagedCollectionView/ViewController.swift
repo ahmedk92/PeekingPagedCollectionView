@@ -17,6 +17,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.decelerationRate = .fast
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        insets = spacing
+    }
+        
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
@@ -30,10 +35,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UICollectionViewDelegate
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        let targetContentOffsetMiddleX = targetContentOffset.pointee.x + collectionView.bounds.width / 2
-        let proposedIndex = Int(targetContentOffsetMiddleX / (cellSize.width + spacing / 4)).clamped(byMin: currentIndex - 1, max: currentIndex + 1).clamped(byMin: 0, max: count - 1)
-        currentIndex = proposedIndex
-        targetContentOffset.pointee.x = CGFloat(proposedIndex) * (cellSize.width + spacing / 4)
+        let proposedIndex = Int((targetContentOffset.pointee.x + cellSize.width / 2) / cellSize.width)
+        currentIndex = proposedIndex.clamped(byMin: currentIndex - 1, max: currentIndex + 1).clamped(byMin: 0, max: count - 1)
+        targetContentOffset.pointee.x = CGFloat(currentIndex) * cellSize.width
         
         // To fix choppiness on small quick swipes
         if velocity.x != 0 && lastTargetContentOffsetX == targetContentOffset.pointee.x {
@@ -48,32 +52,80 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing / 4
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing / 2
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: spacing / 2, bottom: 0, right: spacing / 4)
+        return UIEdgeInsets(top: 0, left: insets, bottom: 0, right: insets)
     }
     
     // MARK: - Private
-    private var spacing: CGFloat {
-        return 100
+    private var insets: CGFloat = 0 {
+        didSet {
+            if insets != oldValue {
+                collectionView.collectionViewLayout.invalidateLayout()
+            }
+        }
     }
+//    private var spacing: CGFloat {
+//        return collectionView.bounds.width * spacingFactor
+//    }
+    private var peak: CGFloat {
+        return spacing * 2
+    }
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     private var cellSize: CGSize {
-        return CGSize(width: collectionView.bounds.width - spacing, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width - peak, height: collectionView.bounds.height)
     }
     private var currentIndex = 0
     private var lastTargetContentOffsetX: CGFloat?
     private let count = 32
 }
 
+//private let spacingFactor: CGFloat = 0.0625
+private let spacing: CGFloat = 30
+
 class Cell: UICollectionViewCell {
-    @IBOutlet weak var label: UILabel!
+    lazy var label: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        ])
+        return label
+    }()
+    private lazy var containerView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .systemYellow
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+//            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 - spacingFactor),
+            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -spacing),
+            view.heightAnchor.constraint(equalTo: contentView.heightAnchor)
+        ])
+        return view
+    }()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }
 
 extension Numeric where Self: Comparable {
