@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        insets = spacing
+        insets = peak / 2
     }
         
     // MARK: - UICollectionViewDataSource
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //        return collectionView.bounds.width * spacingFactor
 //    }
     private var peak: CGFloat {
-        return spacing * 2
+        return spacing * 4 // not necessarily a multiple of spacing; can be anything (but should be greater than spacing).
     }
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -84,11 +84,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     private var currentIndex = 0
     private var lastTargetContentOffsetX: CGFloat?
-    private let count = 32
+    private let count = 8
 }
 
 //private let spacingFactor: CGFloat = 0.0625
-private let spacing: CGFloat = 30
+private let spacing: CGFloat = 16
 
 class Cell: UICollectionViewCell {
     lazy var label: UILabel = {
