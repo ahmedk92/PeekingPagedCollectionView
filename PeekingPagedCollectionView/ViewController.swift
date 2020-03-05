@@ -35,7 +35,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let proposedIndex = Int((targetContentOffset.pointee.x + cellSize.width / 2) / cellSize.width)
-        currentIndex = proposedIndex.clamped(byMin: currentIndex - 1, max: currentIndex + 1).clamped(byMin: 0, max: count - 1)
+        currentIndex = proposedIndex.clamped(byMin: currentIndex - 1, max: currentIndex + 1)
         targetContentOffset.pointee.x = CGFloat(currentIndex) * cellSize.width
         
         // To fix choppiness on small quick swipes
