@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        insets = peek / 2
+        insets = (peek / 2).rounded()
     }
         
     // MARK: - UICollectionViewDataSource
@@ -71,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     private var spacing: CGFloat {
-        return spacingStrategy.spacing(collectionViewWidth: collectionView.bounds.width)
+        return spacingStrategy.spacing(collectionViewWidth: collectionView.bounds.width).rounded()
     }
     private var peek: CGFloat {
         return spacing * 4 // not necessarily a multiple of spacing; can be anything (but should be greater than spacing).
@@ -83,7 +83,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     private var currentIndex = 0
     private var lastTargetContentOffsetX: CGFloat?
-    private let count = 8
+    private let count = 32
 }
 
 
