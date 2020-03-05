@@ -71,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     private var spacing: CGFloat {
-        return collectionView.bounds.width * spacingFactor
+        return spacingStrategy.spacing(collectionViewWidth: collectionView.bounds.width)
     }
     private var peak: CGFloat {
         return spacing * 4 // not necessarily a multiple of spacing; can be anything (but should be greater than spacing).
@@ -86,8 +86,32 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private let count = 8
 }
 
-private let spacingFactor: CGFloat = 0.0625
-//private let spacing: CGFloat = 16
+
+private let spacingStrategy = SpacingStrategy.proportional(1/16)
+//private let spacingStrategy = SpacingStrategy.fixed(50)
+
+enum SpacingStrategy {
+    case fixed(CGFloat)
+    case proportional(CGFloat)
+    
+    func constrain(viewWidthAnchor: NSLayoutDimension, superviewWidthAnchor: NSLayoutDimension) -> NSLayoutConstraint {
+        switch self {
+        case .fixed(let constant):
+            return viewWidthAnchor.constraint(equalTo: superviewWidthAnchor, constant: -constant)
+        case .proportional(let multiplier):
+            return viewWidthAnchor.constraint(equalTo: superviewWidthAnchor, multiplier: 1 - multiplier)
+        }
+    }
+    
+    func spacing(collectionViewWidth: CGFloat) -> CGFloat {
+        switch self {
+        case .fixed(let spacing):
+            return spacing
+        case .proportional(let factor):
+            return collectionViewWidth * factor
+        }
+    }
+}
 
 class Cell: UICollectionViewCell {
     lazy var label: UILabel = {
@@ -109,8 +133,7 @@ class Cell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            view.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 - spacingFactor),
-//            view.widthAnchor.constraint(equalsTo: contentView.widthAnchor, constant: -spacing),
+            spacingStrategy.constrain(viewWidthAnchor: view.widthAnchor, superviewWidthAnchor: contentView.widthAnchor),
             view.heightAnchor.constraint(equalTo: contentView.heightAnchor)
         ])
         return view
