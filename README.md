@@ -1,1 +1,2 @@
 # PeekingPagedCollectionView
+![demo](demo.gif)
